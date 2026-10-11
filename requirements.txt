@@ -1,0 +1,9 @@
+torch>=2.1
+numpy
+safetensors
+huggingface_hub
+pillow
+tqdm
+regex        # optional: exact CLIP tokenizer regex (falls back to `re`)
+matplotlib   # figures
+pytest       # tests

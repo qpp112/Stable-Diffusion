@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.pytest_cache/
+.venv/
+venv/
+# model weights / caches: never commit
+*.safetensors
+*.ckpt
+*.bin
+*.pt
+checkpoints/
+hf_cache/
+# generated outputs (curated figures live in assets/)
+outputs/
+*.out
+slurm-*.out
