@@ -39,7 +39,7 @@ def worker(cfg: dict) -> dict:
 
     from sdscratch.pipeline import MemoryOptions, StableDiffusion
 
-    dev = torch.device("cuda")
+    dev = torch.device("cuda", torch.cuda.current_device())   # set_per_process_memory_fraction needs an index
     if cfg.get("vram_limit_gb"):
         total = torch.cuda.get_device_properties(dev).total_memory
         torch.cuda.set_per_process_memory_fraction(min(1.0, cfg["vram_limit_gb"] * 2**30 / total), dev)
@@ -103,7 +103,7 @@ def main():
     gpu = next((r.get("gpu") for r in rows if r.get("gpu")), "?")
     lines = [f"**{a.model.upper()} {a.size}x{a.size}, {a.steps} DPM-Solver++(2M) steps, CFG on, GPU: {gpu}"
              + (f", allocator capped at {a.vram_limit_gb:g} GB" if a.vram_limit_gb else "") + "**", "",
-             "| Configuration | Peak VRAM (GB) | UNet s/step | Total s | Status |", "|---|---:|---:|---:|---|"]
+             "| Configuration | Peak VRAM (GiB) | UNet s/step | Total s | Status |", "|---|---:|---:|---:|---|"]
     for r in rows:
         ok = r["status"] == "ok"
         lines.append(f"| {r['config']} | {r['peak_gb']:.2f} |" if ok else f"| {r['config']} | - |")
@@ -123,10 +123,11 @@ def main():
         bars = ax.barh(names, vals, color=["#4e79a7" if v else "#e15759" for v in vals])
         for b, r in zip(bars, rows[::-1]):
             ax.text(b.get_width() + 0.1, b.get_y() + b.get_height() / 2,
-                    f"{r['peak_gb']:.1f} GB" if r["status"] == "ok" else r["status"], va="center", fontsize=9)
+                    f"{r['peak_gb']:.1f} GiB" if r["status"] == "ok" else r["status"], va="center", fontsize=9)
+        ax.set_xlim(0, max(max(vals), a.vram_limit_gb or 0, 1) * 1.18)
         if a.vram_limit_gb:
             ax.axvline(a.vram_limit_gb, c="k", ls="--", lw=1)
-        ax.set_xlabel("peak allocated VRAM (GB)")
+        ax.set_xlabel("peak allocated VRAM (GiB)")
         ax.set_title(f"{a.model.upper()} {a.size}x{a.size} on {gpu}")
         fig.tight_layout()
         fig.savefig(out + ".png", dpi=150)

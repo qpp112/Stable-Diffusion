@@ -1,0 +1,49 @@
+{
+ "args": {
+  "model": "sdxl",
+  "checkpoint": null,
+  "prompt": "a cozy reading nook with a large window, rainy evening, warm lamp light, detailed illustration",
+  "seed": 0,
+  "size": null,
+  "guidance": null,
+  "nfe": [
+   10,
+   20,
+   30
+  ],
+  "samplers": [
+   "ddpm",
+   "ddim",
+   "dpm2m",
+   "dpm++2m",
+   "dpm++3m"
+  ],
+  "spacing": "karras",
+  "reference_nfe": 200,
+  "preset": "fast",
+  "out": "/dfs6b/pub/qppham/stable-diffusion-from-scratch/results"
+ },
+ "rmse": {
+  "ddpm": [],
+  "ddim": [
+   0.4478379786014557,
+   0.4138513505458832,
+   0.2774410545825958
+  ],
+  "dpm2m": [
+   0.44839489459991455,
+   0.436793714761734,
+   0.24647875130176544
+  ],
+  "dpm++2m": [
+   0.46061670780181885,
+   0.4389333426952362,
+   0.2424837052822113
+  ],
+  "dpm++3m": [
+   0.4928995370864868,
+   0.44344741106033325,
+   0.30685457587242126
+  ]
+ }
+}

@@ -1,0 +1,147 @@
+# Output of `sbatch hpc3/benchmark.slurm` (job 58034793, NVIDIA A30), progress bars removed
+# Note: the 8 GB-cap section crashed (missing CUDA device index in set_per_process_memory_fraction);
+# fixed and rerun separately -> results/memory_sdxl_1024_limit8gb.md
+name, memory.total [MiB], driver_version
+NVIDIA A30, 24576 MiB, 580.82.07
+.......................                                                  [100%]
+23 passed in 254.64s (0:04:14)
+ddim     ode-rmse @10 NFE = 5.96e-02   @20 = 2.54e-02
+dpm2m    ode-rmse @10 NFE = 1.54e-02   @20 = 7.73e-03
+dpm++2m  ode-rmse @10 NFE = 4.74e-02   @20 = 9.75e-03
+dpm3m    ode-rmse @10 NFE = 2.30e-02   @20 = 6.03e-03
+dpm++3m  ode-rmse @10 NFE = 9.49e-02   @20 = 7.99e-03
+dpm++2m / trailing  ode-rmse @10 NFE = 1.44e-01
+dpm++2m / linspace  ode-rmse @10 NFE = 3.66e-01
+dpm++2m / karras    ode-rmse @10 NFE = 4.74e-02
+dpm++2m / logsnr    ode-rmse @10 NFE = 2.33e-02
+wrote results/toy_gmm.json
+
+=== fp32, naive attention (baseline)
+{'status': 'ok', 'peak_gb': 16.578916549682617, 'unet_s_per_step': 1.498218688298948, 'total_s': 30.427311160601676}
+
+=== + fp16 weights
+{'status': 'ok', 'peak_gb': 10.227290153503418, 'unet_s_per_step': 0.3144919428508729, 'total_s': 6.738405369687825}
+
+=== + SDPA attention
+{'status': 'ok', 'peak_gb': 10.227290153503418, 'unet_s_per_step': 0.21431994903832674, 'total_s': 4.740096690598875}
+
+=== + tiled VAE decode
+{'status': 'ok', 'peak_gb': 7.618712425231934, 'unet_s_per_step': 0.21468298898544164, 'total_s': 5.180136831477284}
+
+=== + model offload
+{'status': 'ok', 'peak_gb': 5.199796199798584, 'unet_s_per_step': 0.3038486046949401, 'total_s': 7.886705110780895}
+
+=== + sequential CFG
+{'status': 'ok', 'peak_gb': 5.040504455566406, 'unet_s_per_step': 0.33966165548190475, 'total_s': 8.569385108537972}
+
+=== + block-wise UNet offload
+{'status': 'ok', 'peak_gb': 1.5405631065368652, 'unet_s_per_step': 2.2010750573594122, 'total_s': 45.68934767181054}
+
+=== fp16, sliced attention (no SDPA)
+{'status': 'ok', 'peak_gb': 7.618712425231934, 'unet_s_per_step': 0.3319334057392552, 'total_s': 7.513506800401956}
+**SDXL 1024x1024, 20 DPM-Solver++(2M) steps, CFG on, GPU: NVIDIA A30**
+
+| Configuration | Peak VRAM (GB) | UNet s/step | Total s | Status |
+|---|---:|---:|---:|---|
+| fp32, naive attention (baseline) | 16.58 | 1.50 | 30.4 | ok |
+| + fp16 weights | 10.23 | 0.31 | 6.7 | ok |
+| + SDPA attention | 10.23 | 0.21 | 4.7 | ok |
+| + tiled VAE decode | 7.62 | 0.21 | 5.2 | ok |
+| + model offload | 5.20 | 0.30 | 7.9 | ok |
+| + sequential CFG | 5.04 | 0.34 | 8.6 | ok |
+| + block-wise UNet offload | 1.54 | 2.20 | 45.7 | ok |
+| fp16, sliced attention (no SDPA) | 7.62 | 0.33 | 7.5 | ok |
+
+=== + fp16 weights
+{'status': 'crashed', 'peak_gb': None, 'unet_s_per_step': None, 'total_s': None}
+
+=== + SDPA attention
+{'status': 'crashed', 'peak_gb': None, 'unet_s_per_step': None, 'total_s': None}
+
+=== + tiled VAE decode
+{'status': 'crashed', 'peak_gb': None, 'unet_s_per_step': None, 'total_s': None}
+
+=== + model offload
+{'status': 'crashed', 'peak_gb': None, 'unet_s_per_step': None, 'total_s': None}
+
+=== + sequential CFG
+{'status': 'crashed', 'peak_gb': None, 'unet_s_per_step': None, 'total_s': None}
+
+=== + block-wise UNet offload
+{'status': 'crashed', 'peak_gb': None, 'unet_s_per_step': None, 'total_s': None}
+
+=== fp16, sliced attention (no SDPA)
+{'status': 'crashed', 'peak_gb': None, 'unet_s_per_step': None, 'total_s': None}
+**SDXL 1024x1024, 20 DPM-Solver++(2M) steps, CFG on, GPU: ?, allocator capped at 8 GB**
+
+| Configuration | Peak VRAM (GB) | UNet s/step | Total s | Status |
+|---|---:|---:|---:|---|
+| + fp16 weights | - | - | - | crashed |
+| + SDPA attention | - | - | - | crashed |
+| + tiled VAE decode | - | - | - | crashed |
+| + model offload | - | - | - | crashed |
+| + sequential CFG | - | - | - | crashed |
+| + block-wise UNet offload | - | - | - | crashed |
+| fp16, sliced attention (no SDPA) | - | - | - | crashed |
+
+=== fp32, naive attention (baseline)
+{'status': 'OOM', 'peak_gb': None, 'unet_s_per_step': None, 'total_s': None}
+
+=== + fp16 weights
+{'status': 'OOM', 'peak_gb': None, 'unet_s_per_step': None, 'total_s': None}
+
+=== + SDPA attention
+{'status': 'ok', 'peak_gb': 4.484147071838379, 'unet_s_per_step': 0.1970574526116252, 'total_s': 4.260930188931525}
+
+=== + tiled VAE decode
+{'status': 'ok', 'peak_gb': 2.565342426300049, 'unet_s_per_step': 0.1968205731129274, 'total_s': 4.5184538923203945}
+
+=== + model offload
+{'status': 'ok', 'peak_gb': 2.150815963745117, 'unet_s_per_step': 0.22117730125319213, 'total_s': 5.191928952932358}
+
+=== + sequential CFG
+{'status': 'ok', 'peak_gb': 1.8869214057922363, 'unet_s_per_step': 0.24557968231383712, 'total_s': 5.706873029470444}
+
+=== + block-wise UNet offload
+{'status': 'ok', 'peak_gb': 0.7209029197692871, 'unet_s_per_step': 0.9073212245479226, 'total_s': 18.8865674873814}
+
+=== fp16, sliced attention (no SDPA)
+{'status': 'ok', 'peak_gb': 3.3105897903442383, 'unet_s_per_step': 0.4793409098405391, 'total_s': 10.139933040831238}
+**SD15 1024x1024, 20 DPM-Solver++(2M) steps, CFG on, GPU: NVIDIA A30**
+
+| Configuration | Peak VRAM (GB) | UNet s/step | Total s | Status |
+|---|---:|---:|---:|---|
+| fp32, naive attention (baseline) | - | - | - | OOM |
+| + fp16 weights | - | - | - | OOM |
+| + SDPA attention | 4.48 | 0.20 | 4.3 | ok |
+| + tiled VAE decode | 2.57 | 0.20 | 4.5 | ok |
+| + model offload | 2.15 | 0.22 | 5.2 | ok |
+| + sequential CFG | 1.89 | 0.25 | 5.7 | ok |
+| + block-wise UNet offload | 0.72 | 0.91 | 18.9 | ok |
+| fp16, sliced attention (no SDPA) | 3.31 | 0.48 | 10.1 | ok |
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+reference: dpm++2m with 500 steps
+
+ddpm []
+
+ddim ['0.660', '0.496', '0.377', '0.341']
+
+dpm2m ['0.706', '0.531', '0.330', '0.170']
+
+dpm++2m ['0.794', '0.556', '0.338', '0.169']
+
+dpm++3m ['0.922', '0.554', '0.427', '0.025']
+saved results to /dfs6b/pub/qppham/stable-diffusion-from-scratch/results
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+reference: dpm++2m with 200 steps
+
+ddpm []
+
+ddim ['0.448', '0.414', '0.277']
+
+dpm2m ['0.448', '0.437', '0.246']
+
+dpm++2m ['0.461', '0.439', '0.242']
+
+dpm++3m ['0.493', '0.443', '0.307']
+saved results to /dfs6b/pub/qppham/stable-diffusion-from-scratch/results

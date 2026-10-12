@@ -1,0 +1,154 @@
+[
+ {
+  "gpu": "NVIDIA A30",
+  "torch": "2.14.1+cu126",
+  "status": "OOM",
+  "error": "CUDA out of memory. Tried to allocate 16.00 GiB. GPU 0 has a total capacity of 23.60 GiB of which 2.95 GiB is free. Including non-PyTorch memory, this process has 20.63 GiB memory in use. Of the alloc",
+  "config": "fp32, naive attention (baseline)"
+ },
+ {
+  "gpu": "NVIDIA A30",
+  "torch": "2.14.1+cu126",
+  "status": "OOM",
+  "error": "CUDA out of memory. Tried to allocate 8.00 GiB. GPU 0 has a total capacity of 23.60 GiB of which 5.05 GiB is free. Including non-PyTorch memory, this process has 18.54 GiB memory in use. Of the alloca",
+  "config": "+ fp16 weights"
+ },
+ {
+  "gpu": "NVIDIA A30",
+  "torch": "2.14.1+cu126",
+  "status": "ok",
+  "peak_gb": 4.484147071838379,
+  "stages": {
+   "text_encoders": {
+    "seconds": 0.0078877960331738,
+    "peak_gb": 2.0158138275146484
+   },
+   "unet": {
+    "seconds": 3.941149052232504,
+    "peak_gb": 2.5435609817504883
+   },
+   "vae": {
+    "seconds": 0.31189334066584706,
+    "peak_gb": 4.484147071838379
+   }
+  },
+  "unet_s_per_step": 0.1970574526116252,
+  "total_s": 4.260930188931525,
+  "config": "+ SDPA attention"
+ },
+ {
+  "gpu": "NVIDIA A30",
+  "torch": "2.14.1+cu126",
+  "status": "ok",
+  "peak_gb": 2.565342426300049,
+  "stages": {
+   "text_encoders": {
+    "seconds": 0.007686805911362171,
+    "peak_gb": 2.0158138275146484
+   },
+   "unet": {
+    "seconds": 3.9364114622585475,
+    "peak_gb": 2.5435609817504883
+   },
+   "vae": {
+    "seconds": 0.5743556241504848,
+    "peak_gb": 2.565342426300049
+   }
+  },
+  "unet_s_per_step": 0.1968205731129274,
+  "total_s": 4.5184538923203945,
+  "config": "+ tiled VAE decode"
+ },
+ {
+  "gpu": "NVIDIA A30",
+  "torch": "2.14.1+cu126",
+  "status": "ok",
+  "peak_gb": 2.150815963745117,
+  "stages": {
+   "text_encoders": {
+    "seconds": 0.10197666101157665,
+    "peak_gb": 0.24610614776611328
+   },
+   "unet": {
+    "seconds": 4.4235460250638425,
+    "peak_gb": 2.150815963745117
+   },
+   "vae": {
+    "seconds": 0.6664062668569386,
+    "peak_gb": 0.7189497947692871
+   }
+  },
+  "unet_s_per_step": 0.22117730125319213,
+  "total_s": 5.191928952932358,
+  "config": "+ model offload"
+ },
+ {
+  "gpu": "NVIDIA A30",
+  "torch": "2.14.1+cu126",
+  "status": "ok",
+  "peak_gb": 1.8869214057922363,
+  "stages": {
+   "text_encoders": {
+    "seconds": 0.13311940198764205,
+    "peak_gb": 0.24610614776611328
+   },
+   "unet": {
+    "seconds": 4.911593646276742,
+    "peak_gb": 1.8869214057922363
+   },
+   "vae": {
+    "seconds": 0.6621599812060595,
+    "peak_gb": 0.7189497947692871
+   }
+  },
+  "unet_s_per_step": 0.24557968231383712,
+  "total_s": 5.706873029470444,
+  "config": "+ sequential CFG"
+ },
+ {
+  "gpu": "NVIDIA A30",
+  "torch": "2.14.1+cu126",
+  "status": "ok",
+  "peak_gb": 0.7209029197692871,
+  "stages": {
+   "text_encoders": {
+    "seconds": 0.1219485611654818,
+    "peak_gb": 0.24610614776611328
+   },
+   "unet": {
+    "seconds": 18.146424490958452,
+    "peak_gb": 0.30352210998535156
+   },
+   "vae": {
+    "seconds": 0.6181944352574646,
+    "peak_gb": 0.7209029197692871
+   }
+  },
+  "unet_s_per_step": 0.9073212245479226,
+  "total_s": 18.8865674873814,
+  "config": "+ block-wise UNet offload"
+ },
+ {
+  "gpu": "NVIDIA A30",
+  "torch": "2.14.1+cu126",
+  "status": "ok",
+  "peak_gb": 3.3105897903442383,
+  "stages": {
+   "text_encoders": {
+    "seconds": 0.0076913549564778805,
+    "peak_gb": 2.0158138275146484
+   },
+   "unet": {
+    "seconds": 9.586818196810782,
+    "peak_gb": 3.3105897903442383
+   },
+   "vae": {
+    "seconds": 0.5454234890639782,
+    "peak_gb": 2.564488410949707
+   }
+  },
+  "unet_s_per_step": 0.4793409098405391,
+  "total_s": 10.139933040831238,
+  "config": "fp16, sliced attention (no SDPA)"
+ }
+]

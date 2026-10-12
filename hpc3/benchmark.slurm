@@ -1,16 +1,19 @@
 #!/bin/bash
 # Reproduce the README numbers on HPC3:   sbatch hpc3/benchmark.slurm
-# free-gpu jobs are free but can be preempted; use -p gpu with your lab's account for guaranteed runs.
+# free-gpu costs nothing but jobs can be killed (preempted) at any time; just resubmit.
+# Each script below writes its own results, so a killed job only loses the step that was running.
+# Max 9 GB host RAM per CPU core on free-gpu, so --mem must stay <= 9G x cpus-per-task.
 #SBATCH --job-name=sd-scratch-bench
 #SBATCH --partition=free-gpu
-#SBATCH --gres=gpu:1                 # e.g. gpu:V100:1 or gpu:A30:1 to pin a GPU type
-#SBATCH --cpus-per-task=4
+#SBATCH --gres=gpu:1                 # pin a type for comparable numbers, e.g. gpu:A30:1 or gpu:V100:1
+#SBATCH --cpus-per-task=6
 #SBATCH --mem=48G                    # fp32 SDXL baseline needs ~14 GB host RAM to load
-#SBATCH --time=03:00:00
+#SBATCH --time=08:00:00              # free-gpu allows up to 3 days; first run also downloads ~11 GB
 #SBATCH --output=slurm-%x-%j.out
 
-set -euo pipefail
-source ${ENV_DIR:-$HOME/envs/sdscratch}/bin/activate
+module load python/3.10.2            # before `set -u`: Lmod scripts can trip on unset variables
+set -uo pipefail                     # no -e: one failed step should not stop the others
+source ${ENV_DIR:-/pub/$USER/envs/sdscratch}/bin/activate
 cd "$SLURM_SUBMIT_DIR"
 nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv
 

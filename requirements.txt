@@ -6,4 +6,5 @@ pillow
 tqdm
 regex        # optional: exact CLIP tokenizer regex (falls back to `re`)
 matplotlib   # figures
+scipy        # exact ODE reference in scripts/toy_gmm.py
 pytest       # tests

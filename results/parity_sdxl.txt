@@ -1,0 +1,13 @@
+SDXL parity vs diffusers (torch.float16, cuda); relative = max|ours-ref| / max|ref|
+
+component      max abs diff   relative  result
+ids_1                                   identical
+te_1              0.000e+00   0.00e+00  PASS
+ids_2                                   identical
+te_2              0.000e+00   0.00e+00  PASS
+pooled            0.000e+00   0.00e+00  PASS
+unet              5.859e-03   1.48e-03  PASS
+vae_enc           1.548e-02   6.43e-04  PASS
+vae_dec           2.949e-03   2.62e-03  PASS
+
+ALL PASS

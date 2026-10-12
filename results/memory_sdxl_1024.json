@@ -1,0 +1,186 @@
+[
+ {
+  "gpu": "NVIDIA A30",
+  "torch": "2.14.1+cu126",
+  "status": "ok",
+  "peak_gb": 16.578916549682617,
+  "stages": {
+   "text_encoders": {
+    "seconds": 0.02765006385743618,
+    "peak_gb": 13.080970287322998
+   },
+   "unet": {
+    "seconds": 29.964373765978962,
+    "peak_gb": 15.979948043823242
+   },
+   "vae": {
+    "seconds": 0.43528733076527715,
+    "peak_gb": 16.578916549682617
+   }
+  },
+  "unet_s_per_step": 1.498218688298948,
+  "total_s": 30.427311160601676,
+  "config": "fp32, naive attention (baseline)"
+ },
+ {
+  "gpu": "NVIDIA A30",
+  "torch": "2.14.1+cu126",
+  "status": "ok",
+  "peak_gb": 10.227290153503418,
+  "stages": {
+   "text_encoders": {
+    "seconds": 0.012280118651688099,
+    "peak_gb": 6.726551055908203
+   },
+   "unet": {
+    "seconds": 6.2898388570174575,
+    "peak_gb": 8.177355766296387
+   },
+   "vae": {
+    "seconds": 0.43628639401867986,
+    "peak_gb": 10.227290153503418
+   }
+  },
+  "unet_s_per_step": 0.3144919428508729,
+  "total_s": 6.738405369687825,
+  "config": "+ fp16 weights"
+ },
+ {
+  "gpu": "NVIDIA A30",
+  "torch": "2.14.1+cu126",
+  "status": "ok",
+  "peak_gb": 10.227290153503418,
+  "stages": {
+   "text_encoders": {
+    "seconds": 0.012272166088223457,
+    "peak_gb": 6.726551055908203
+   },
+   "unet": {
+    "seconds": 4.286398980766535,
+    "peak_gb": 7.044543266296387
+   },
+   "vae": {
+    "seconds": 0.441425543744117,
+    "peak_gb": 10.227290153503418
+   }
+  },
+  "unet_s_per_step": 0.21431994903832674,
+  "total_s": 4.740096690598875,
+  "config": "+ SDPA attention"
+ },
+ {
+  "gpu": "NVIDIA A30",
+  "torch": "2.14.1+cu126",
+  "status": "ok",
+  "peak_gb": 7.618712425231934,
+  "stages": {
+   "text_encoders": {
+    "seconds": 0.012147848028689623,
+    "peak_gb": 6.726551055908203
+   },
+   "unet": {
+    "seconds": 4.2936597797088325,
+    "peak_gb": 7.044543266296387
+   },
+   "vae": {
+    "seconds": 0.8743292037397623,
+    "peak_gb": 7.618712425231934
+   }
+  },
+  "unet_s_per_step": 0.21468298898544164,
+  "total_s": 5.180136831477284,
+  "config": "+ tiled VAE decode"
+ },
+ {
+  "gpu": "NVIDIA A30",
+  "torch": "2.14.1+cu126",
+  "status": "ok",
+  "peak_gb": 5.199796199798584,
+  "stages": {
+   "text_encoders": {
+    "seconds": 0.7552619189955294,
+    "peak_gb": 1.5405631065368652
+   },
+   "unet": {
+    "seconds": 6.076972093898803,
+    "peak_gb": 5.199796199798584
+   },
+   "vae": {
+    "seconds": 1.0544710978865623,
+    "peak_gb": 1.2147693634033203
+   }
+  },
+  "unet_s_per_step": 0.3038486046949401,
+  "total_s": 7.886705110780895,
+  "config": "+ model offload"
+ },
+ {
+  "gpu": "NVIDIA A30",
+  "torch": "2.14.1+cu126",
+  "status": "ok",
+  "peak_gb": 5.040504455566406,
+  "stages": {
+   "text_encoders": {
+    "seconds": 0.7308529461733997,
+    "peak_gb": 1.5405631065368652
+   },
+   "unet": {
+    "seconds": 6.793233109638095,
+    "peak_gb": 5.040504455566406
+   },
+   "vae": {
+    "seconds": 1.0452990527264774,
+    "peak_gb": 1.2147693634033203
+   }
+  },
+  "unet_s_per_step": 0.33966165548190475,
+  "total_s": 8.569385108537972,
+  "config": "+ sequential CFG"
+ },
+ {
+  "gpu": "NVIDIA A30",
+  "torch": "2.14.1+cu126",
+  "status": "ok",
+  "peak_gb": 1.5405631065368652,
+  "stages": {
+   "text_encoders": {
+    "seconds": 0.7158430386334658,
+    "peak_gb": 1.5405631065368652
+   },
+   "unet": {
+    "seconds": 44.021501147188246,
+    "peak_gb": 0.903264045715332
+   },
+   "vae": {
+    "seconds": 0.9520034859888256,
+    "peak_gb": 1.2189197540283203
+   }
+  },
+  "unet_s_per_step": 2.2010750573594122,
+  "total_s": 45.68934767181054,
+  "config": "+ block-wise UNet offload"
+ },
+ {
+  "gpu": "NVIDIA A30",
+  "torch": "2.14.1+cu126",
+  "status": "ok",
+  "peak_gb": 7.618712425231934,
+  "stages": {
+   "text_encoders": {
+    "seconds": 0.012502215802669525,
+    "peak_gb": 6.726551055908203
+   },
+   "unet": {
+    "seconds": 6.638668114785105,
+    "peak_gb": 7.242297172546387
+   },
+   "vae": {
+    "seconds": 0.8623364698141813,
+    "peak_gb": 7.618712425231934
+   }
+  },
+  "unet_s_per_step": 0.3319334057392552,
+  "total_s": 7.513506800401956,
+  "config": "fp16, sliced attention (no SDPA)"
+ }
+]

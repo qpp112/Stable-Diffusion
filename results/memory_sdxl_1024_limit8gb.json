@@ -1,0 +1,65 @@
+[
+ {
+  "config": "+ fp16 weights",
+  "status": "OOM",
+  "peak_gb": null,
+  "unet_s_per_step": null,
+  "total_s": null,
+  "gpu": "NVIDIA A30",
+  "vram_limit_gib": 8
+ },
+ {
+  "config": "+ SDPA attention",
+  "status": "OOM",
+  "peak_gb": null,
+  "unet_s_per_step": null,
+  "total_s": null,
+  "gpu": "NVIDIA A30",
+  "vram_limit_gib": 8
+ },
+ {
+  "config": "+ tiled VAE decode",
+  "status": "ok",
+  "peak_gb": 7.619566440582275,
+  "unet_s_per_step": 0.2156757947523147,
+  "total_s": 5.197501287329942,
+  "gpu": "NVIDIA A30",
+  "vram_limit_gib": 8
+ },
+ {
+  "config": "+ model offload",
+  "status": "ok",
+  "peak_gb": 5.199796199798584,
+  "unet_s_per_step": 0.3040010079042986,
+  "total_s": 7.872182582039386,
+  "gpu": "NVIDIA A30",
+  "vram_limit_gib": 8
+ },
+ {
+  "config": "+ sequential CFG",
+  "status": "ok",
+  "peak_gb": 5.040504455566406,
+  "unet_s_per_step": 0.35694126880262045,
+  "total_s": 8.933929326944053,
+  "gpu": "NVIDIA A30",
+  "vram_limit_gib": 8
+ },
+ {
+  "config": "+ block-wise UNet offload",
+  "status": "ok",
+  "peak_gb": 1.5405631065368652,
+  "unet_s_per_step": 2.11141373263672,
+  "total_s": 43.9399002129212,
+  "gpu": "NVIDIA A30",
+  "vram_limit_gib": 8
+ },
+ {
+  "config": "fp16, sliced attention (no SDPA)",
+  "status": "ok",
+  "peak_gb": 7.619566440582275,
+  "unet_s_per_step": 0.3375649173511192,
+  "total_s": 7.637558497022837,
+  "gpu": "NVIDIA A30",
+  "vram_limit_gib": 8
+ }
+]

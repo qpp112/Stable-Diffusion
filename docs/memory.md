@@ -3,6 +3,12 @@
 All numbers below are **analytic estimates** from parameter counts and tensor shapes (1 GiB = 2^30
 bytes). Measured peaks for your GPU come from `scripts/benchmark_memory.py`.
 
+Measurements on an NVIDIA A30 (README, `results/memory_*_1024.json`) match the estimates:
+- With all SDXL fp16 weights resident (VAE in fp32), the text-encoder stage peaks at 6.73 GiB, against
+  the 6.6 GiB estimated below.
+- For SD 1.5 at 1024 px, naive attention fails trying to allocate exactly 16.00 GiB in fp32 and 8.00 GiB
+  in fp16, the attention-matrix sizes in section 2.
+
 ## 1. Weights
 
 | component | parameters | fp32 | fp16 |

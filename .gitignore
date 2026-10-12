@@ -16,3 +16,6 @@ hf_cache/
 outputs/
 *.out
 slurm-*.out
+# full-size benchmark images (curated copies live in assets/)
+results/*_images/
+results/*_reference.png

@@ -5,11 +5,12 @@
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=24G
-#SBATCH --time=00:30:00
+#SBATCH --time=01:00:00              # first run downloads the SDXL weights (~7 GB)
 #SBATCH --output=slurm-%x-%j.out
 
+module load python/3.10.2            # before `set -u`: Lmod scripts can trip on unset variables
 set -euo pipefail
-source ${ENV_DIR:-$HOME/envs/sdscratch}/bin/activate
+source ${ENV_DIR:-/pub/$USER/envs/sdscratch}/bin/activate
 cd "$SLURM_SUBMIT_DIR"
 python scripts/generate.py --model sdxl --prompt "${1:-a lighthouse on a cliff at dusk, oil painting}" \
     --steps 25 --num 4 --preset balanced --out outputs/hpc3

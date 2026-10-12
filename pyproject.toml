@@ -20,7 +20,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest", "matplotlib", "regex"]
+dev = ["pytest", "matplotlib", "regex", "scipy"]
 parity = ["diffusers", "transformers", "accelerate"]
 
 [tool.setuptools.packages.find]
