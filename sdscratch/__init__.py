@@ -1,4 +1,4 @@
-"""Stable Diffusion (SD 1.5 / SDXL) from scratch in PyTorch.
+"""Stable Diffusion (SD 1.5 / SDXL) in plain PyTorch.
 
 The sampler code in ``sdscratch.samplers`` and the toy experiments in ``sdscratch.toy``
 are NumPy-compatible and do not import torch; everything else does.

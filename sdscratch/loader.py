@@ -1,4 +1,4 @@
-"""Load official single-file SD 1.5 / SDXL checkpoints into the from-scratch modules.
+"""Load official single-file SD 1.5 / SDXL checkpoints into this package's modules.
 
 * Tensors are read one at a time with ``safetensors.safe_open`` and cast immediately,
   so peak host RAM is ~ the size of the largest component in the target dtype.
@@ -6,7 +6,7 @@
   checkpoint tensors are *assigned* as parameters (``load_state_dict(assign=True)``).
   Building the SDXL UNet in fp32 first would otherwise need 10 GB of RAM.
 * Loading is ``strict``: any missing / unexpected key is an error, so a successful load
-  proves the hand-written architecture matches the checkpoint exactly.
+  proves the architecture matches the checkpoint exactly.
 """
 
 from __future__ import annotations

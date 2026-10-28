@@ -1,4 +1,4 @@
-"""CLIP text encoder (causal Transformer), written from scratch.
+"""CLIP text encoder (causal Transformer).
 
 Parameter names mirror Hugging Face's ``CLIPTextModel`` / ``CLIPTextModelWithProjection``
 so original checkpoints load with a plain ``load_state_dict`` (the OpenCLIP ViT-bigG

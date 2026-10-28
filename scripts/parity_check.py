@@ -1,6 +1,6 @@
 """Numerical parity check against Hugging Face diffusers (the reference implementation).
 
-Loads the *same* single-file checkpoint into diffusers and into the from-scratch modules,
+Loads the *same* single-file checkpoint into diffusers and into this repo's modules,
 feeds identical inputs to every component and reports the max abs / relative difference:
 tokenizer ids, text encoder(s), UNet noise prediction (incl. SDXL size conditioning),
 VAE encoder and decoder.

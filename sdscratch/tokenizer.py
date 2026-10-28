@@ -1,4 +1,4 @@
-"""CLIP byte-level BPE tokenizer (Radford et al., 2021), written from scratch.
+"""CLIP byte-level BPE tokenizer (Radford et al., 2021).
 
 Reads the standard ``vocab.json`` / ``merges.txt`` files shipped with every Stable
 Diffusion repo on the Hugging Face Hub. Pure Python - no torch needed.

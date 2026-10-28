@@ -1,12 +1,12 @@
-# Stable Diffusion from Scratch
+# Stable Diffusion
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/qpp112/stable-diffusion-from-scratch/blob/main/notebooks/demo.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/qpp112/Stable-Diffusion/blob/main/notebooks/demo.ipynb)
 ![python](https://img.shields.io/badge/python-3.9%2B-blue) ![pytorch](https://img.shields.io/badge/PyTorch-2.1%2B-ee4c2c) ![license](https://img.shields.io/badge/license-MIT-green)
 
-A from-scratch PyTorch implementation of **Stable Diffusion 1.5** and **SDXL**: UNet, VAE, both CLIP
+A plain-PyTorch implementation of **Stable Diffusion 1.5** and **SDXL**: UNet, VAE, both CLIP
 text encoders, the BPE tokenizer, and **DDPM / DDIM / DPM-Solver / DPM-Solver++** samplers, plus the
 memory optimisations needed to generate **1024x1024** images on consumer GPUs. The official pretrained
-weights are loaded into these hand-written modules; `diffusers`, `transformers` and `k-diffusion`
+weights are loaded into this repo's modules; `diffusers`, `transformers` and `k-diffusion`
 are not used at runtime (only for the optional parity check).
 
 ```python
@@ -31,7 +31,7 @@ offload + tiled VAE).
   denoising step on an NVIDIA A30. It still runs with the allocator capped at 8 GiB, like a consumer card.
   Block-wise offloading brings it to **1.5 GiB**, but each step is about 10x slower. These numbers are
   measured, not estimated ([results](#memory-at-1024x1024)).
-- **Every component written by hand**, with parameter names that mirror the original
+- **Every component implemented in this repo**, with parameter names that mirror the original
   `ldm`/`sgm` code, so the official single-file checkpoints load with `strict=True`. The parameter
   counts match the released models exactly (UNet 859,520,964 / 2,567,463,684; VAE 83,653,863;
   CLIP-L 123,060,480; OpenCLIP-bigG 694,659,840); see `tests/test_models.py`.
@@ -184,7 +184,7 @@ VAE encoder and decoder.
 | VAE encoder (fp32) | 4.5e-3 | 6.4e-4 |
 | VAE decoder (fp32) | 1.6e-3 | 2.6e-3 |
 
-The hand-written tokenizer, text encoders and SD 1.5 UNet reproduce the reference **bit for bit**. The
+This repo's tokenizer, text encoders and SD 1.5 UNet reproduce the reference **bit for bit**. The
 remaining differences are fp16 and kernel round-off. One detail for SD 1.5: diffusers loads its VAE in fp16
 and upcasts it, while this code reads the checkpoint's fp32 weights directly. Raw outputs are in
 [`results/parity_sd15.txt`](results/parity_sd15.txt) and [`results/parity_sdxl.txt`](results/parity_sdxl.txt).
@@ -228,7 +228,7 @@ Implementation notes:
 ## Quickstart
 
 ```bash
-git clone https://github.com/qpp112/stable-diffusion-from-scratch.git && cd stable-diffusion-from-scratch
+git clone https://github.com/qpp112/Stable-Diffusion.git && cd Stable-Diffusion
 pip install -e ".[dev]"
 pytest -q                                   # ~1 min on CPU; no model downloads
 

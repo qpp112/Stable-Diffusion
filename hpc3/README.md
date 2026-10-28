@@ -21,8 +21,8 @@ mkdir -p /pub/$USER/envs $PIP_CACHE_DIR $HF_HOME
 
 module load python/3.10.2
 cd /pub/$USER
-git clone https://github.com/qpp112/stable-diffusion-from-scratch.git
-cd stable-diffusion-from-scratch
+git clone https://github.com/qpp112/Stable-Diffusion.git
+cd Stable-Diffusion
 python3 -m venv $ENV_DIR
 source $ENV_DIR/bin/activate
 pip install --upgrade pip
@@ -39,7 +39,7 @@ exit
 srun -p free-gpu --gres=gpu:1 -c 4 --mem=32G -t 02:00:00 --pty /bin/bash -i
 module load python/3.10.2
 source $ENV_DIR/bin/activate
-cd /pub/$USER/stable-diffusion-from-scratch
+cd /pub/$USER/Stable-Diffusion
 
 python -c "import torch; print(torch.__version__, torch.cuda.is_available(), torch.cuda.get_device_name(0))"
 pytest -q
@@ -51,7 +51,7 @@ python scripts/parity_check.py --model sd15        # optional: pip install diffu
 ## Batch jobs
 
 ```bash
-cd /pub/$USER/stable-diffusion-from-scratch
+cd /pub/$USER/Stable-Diffusion
 sbatch hpc3/benchmark.slurm          # tests + toy study + memory ladders + sampler comparisons (several hours)
 sbatch hpc3/generate.slurm "a watercolor fox in a snowy forest"
 squeue -u $USER                      # job status
@@ -59,4 +59,4 @@ tail -f slurm-sd-scratch-bench-<jobid>.out
 ```
 
 Outputs land in `results/` and `outputs/hpc3/`. Copy them to your laptop with
-`rsync -av <ucinetid>@hpc3.rcic.uci.edu:/pub/<ucinetid>/stable-diffusion-from-scratch/results/ results/`.
+`rsync -av <ucinetid>@hpc3.rcic.uci.edu:/pub/<ucinetid>/Stable-Diffusion/results/ results/`.

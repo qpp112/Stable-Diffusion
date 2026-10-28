@@ -1,4 +1,4 @@
-"""Conditional UNet (epsilon-prediction) used by SD 1.5 and SDXL, written from scratch.
+"""Conditional UNet (epsilon-prediction) used by SD 1.5 and SDXL.
 
 Structure (Rombach et al., 2022; Podell et al., 2023):
 
